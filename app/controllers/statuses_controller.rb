@@ -4,7 +4,7 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.json
   def index
-    @statuses = Status.all
+    @statuses = @user.statuses.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1
   # GET /statuses/1.json
   def show
-    @status = Status.find(params[:id])
+    @status = status.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   # GET /statuses/new.json
   def new
-    @status = Status.new
+    @status = status.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +42,7 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.json
   def create
-    @status = Status.new(params[:status])
+    @status = status.new(params[:status])
 
     respond_to do |format|
       if @status.save
@@ -58,7 +58,7 @@ class StatusesController < ApplicationController
   # PUT /statuses/1
   # PUT /statuses/1.json
   def update
-    @status = Status.find(params[:id])
+    @status = status.find(params[:id])
 
     respond_to do |format|
       if @status.update_attributes(params[:status])
@@ -74,7 +74,7 @@ class StatusesController < ApplicationController
   # DELETE /statuses/1
   # DELETE /statuses/1.json
   def destroy
-    @status = Status.find(params[:id])
+    @status = status.find(params[:id])
     @status.destroy
 
     respond_to do |format|
